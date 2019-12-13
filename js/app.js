@@ -42,7 +42,7 @@ class listObject{
 }
 
 const construct = function(n, p) {
-   listItems.push(new listObject(n, p);
+   listItems.push(new listObject(n, p));
   
 };
 
