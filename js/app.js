@@ -5,8 +5,9 @@ window.onload = function() {
     var name = document.getElementById("name").value;
     var priority = document.getElementById("priority").value;
     document.getElementById("input").onclick = construct(name, priority);
-    
-    writeItems();
+    document.getElementById("input").onclick = writeItems;
+    document.getElementById("remove").onclick = remove;
+    document.getElementById("remove").onclick = writeItems;
 }
 
 class listObject{
