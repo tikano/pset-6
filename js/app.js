@@ -46,6 +46,15 @@ const construct = function(n, p) {
   
 };
 
+const remove = function(n) {
+   for (i = 0; i < listItems.length; i++) {
+        if((listItems[i].getName()).equals(n)){
+            listItems.splice(i);
+        }  
+   }  
+  
+};
+
 const writeItems = function() {
    const canvas = document.getElementById('student-canvas-1');
    const ctx = canvas.getContext('2d');
