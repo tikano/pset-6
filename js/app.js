@@ -3,7 +3,7 @@ var listItems = [];
 window.onload = function() {
 
     var name = document.getElementById("name").value;
-    var priority = document.getElementById("name").value;
+    var priority = document.getElementById("priority").value;
     document.getElementById("input").onclick = construct(name, priority);
     
     writeItems();
