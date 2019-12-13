@@ -1,4 +1,4 @@
-var listItems = [];
+var listItems = [new listObject("high", "low")];
 
 window.onload = function() {
 
