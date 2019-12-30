@@ -5,7 +5,7 @@ window.onload = function() {
     var name = document.getElementById("name").value;
     var priority = document.getElementById("priority").value;
     document.getElementById("input").onclick = construct(name, priority);
-    document.getElementById("remove").onclick = remove;
+    document.getElementById("remove").onclick = remove;a
     writeItems()
 }
 
