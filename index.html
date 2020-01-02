@@ -5,14 +5,18 @@
     <title>Problem Set 6</title>
 
     <!-- stylesheets -->
-    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+    <link rel="stylesheet" type="text/css" href="Styles/styles.css" />
 
     <!-- scripts -->
-    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="Scripts/app.js"></script>
 </head>
 <body>
     <div class="header">
-        <h1>PROBLEM SET 6!</h1>
+        <h1>Welcome to my todo app!</h1>
+        <button id="super">Activate Point Mode</button>
+        <div id="point">
+          <var>0</var>
+        </div>
         <hr />
     </div>
     
@@ -24,33 +28,32 @@
             <button id="input">Input</button>
         </div>
         
-        <form>
+      
         Name:<br>
-        <input id = "name" type="text" name="name">
+        <input id = "name" type="text" onsubmit="return false;">
         <br>
         Priority:<br>
         <select id = "priority" name="priority">
             <option value="high">High</option>
             <option value="low">Low</option>
         </select>
-        </form>
+        <br>
+        Due Date(Optional)(year-month-date format): <br>
+        <input id = "date" type="text" onsubmit="return false;">
+    
         
         <h3 id="h3">STUDENT OUTPUT</h3>
-        
-        
-        <form>
-        Name:<br>
-        <input type="text" name="name">
-        <br>
-        </form>
-        
-        <div>
-            <button id="complete">Mark this as complete</button>
-            <button id="incomplete">Mark this as incomplete</button>
-            <button id="remove">Remove this object</button>
+        <br />
+        <br />
+        <div id="cool">
+        <h2>OPTIONS</h2>
+        <button id="remove">Remove Element</button>
+        <button id="complete">Toggle Complete</button>
+        <button id="inprior">Increase Priority</button>
+        <button id="deprior">Decrease Priority</button>
         </div>
       
     </div>
 
     <!-- rectangle -->
- 
+</html>
