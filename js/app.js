@@ -9,11 +9,11 @@ window.onload = function() {
 }
 
 class listObject{
-    var name = "";
+    var na = "";
     var priority = "low";
     var complete = false;
     constructor(mname, mpriority){
-      name = mname;
+      na = mname;
       priority = mpriority;
     }
 
@@ -26,7 +26,7 @@ class listObject{
     }
 
     getName(){
-        return name;
+        return na;
     }
 
     markComplete(){
