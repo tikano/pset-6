@@ -46,7 +46,7 @@ const construct = function(n, p) {
    const newParagraph = document.createElement("p");
    newParagraph.innerHTML = n;
    header.append(newParagraph);
-   
+   console.log("why");
    
   
 };
