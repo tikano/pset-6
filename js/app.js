@@ -6,7 +6,6 @@ window.onload = function() {
     var priority = document.getElementById("priority").value;
     document.getElementById("input").onclick = construct(name, priority);
     document.getElementById("remove").onclick = remove;
-    writeItems()
 }
 
 class listObject{
@@ -42,7 +41,13 @@ class listObject{
 }
 
 const construct = function(n, p) {
+   const header = document.getElementById("h3");
    listItems.push(new listObject(n, p));
+   const newParagraph = document.createElement("p");
+   newParagraph.innerHTML = n;
+   header.append(newParagraph);
+   
+   
   
 };
 
@@ -54,14 +59,5 @@ const remove = function(n) {
    }  
   
 };
-
-const writeItems = function() {
-   const canvas = document.getElementById('student-canvas-1');
-   const ctx = canvas.getContext('2d');
-   ctx.clearRect(0, 0, canvas.width, canvas.height);
-   ctx.font = "48px sans-serif";
-   for (i = 0; i < listItems.length; i++) {
-   ctx.strokeText(listItems[i].getName(), 30, 70, 994);
-   }  
   
 };
