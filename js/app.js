@@ -1,12 +1,18 @@
 class listObject{
-    thisdate = "";
-    constructor(mdate){
-      thisdate = mdate;
+    constructor(name, priority,date){
+      this.name = name;
+      this.priority = priority;
+      this.date = date;
+    }
+
+    getName(){
+      return this.name;
     }
 
     getDate(){
-        return date;
+      return this.date;
     }
+
 
 }
 
@@ -17,9 +23,10 @@ var ultrabutton;
 var today = new Date();
 var supe = false;
 var dat = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+console.log(dat);
 window.onload = function(){
 var x = document.getElementById("cool");
-var y = document.getElementById("point");
+var y = document.getElementById("show");
 y.style.display = "none";
 x.style.display = "none";
 document.addEventListener("keyup", function(event) {
@@ -32,7 +39,20 @@ document.getElementById("input").onclick = function() {
     var name = document.getElementById("name").value;
     var priority = document.getElementById("priority").value;
     var date = document.getElementById("date").value;
-    construct(name, priority);
+    console.log(date);
+    document.getElementById("name").value = "";
+    document.getElementById("date").value = "";
+    for (var i = 0; i < listItems.length; i++) {
+    console.log(listItems[i].getDate());
+    if(supe == true && dat == listItems[i].getDate){
+      document.getElementById(listItems[i].getName()).remove();
+      
+      document.getElementById(listItems[i].getName() + "1").remove();
+      points = points - 1;
+    }
+    //Do something
+   }
+    construct(name, priority, date);
 }
 document.getElementById("remove").onclick = function() {
     console.log("hello");
@@ -79,16 +99,20 @@ document.getElementById("deprior").onclick = function() {
 }
 document.getElementById("super").onclick = function(){
   supe = true;
+  y.style.display = "block";
+}
+document.getElementById("show").onclick = function(){
+  document.getElementById("point").innerHTML = points.toString();
 }
 }
 
-//var listItems = [new listObject("high", "low")];
+var listItems = [];
 
-const construct = function(n, p) {
+const construct = function(n, p, d) {
    console.log("hola");
+   
    const header = document.getElementById("h3");
-   //listObject [{n}] = new listObject(d);
-   //listItems.push(new listObject(n, p));
+   listItems.push(new listObject(n, p, d));
    if(n != ""){
    const item = document.createElement("button");
    item.innerHTML = n;
@@ -105,15 +129,13 @@ const construct = function(n, p) {
    ultrabutton = item;
    breaker.id = n + "1";
    item.addEventListener ("click", function() {
-  curItem = n;
-  if(supe == true && dat == [{curItem}].getDate()){
-    var button = document.getElementById(curItem);
-    button.remove();
-    var br = document.getElementById(curItem + "1");
-    br.remove();
-    x.style.display = "none";
-    points = points - 1;
+   for (var i = 0; i < listItems.length; i++) {
+    if(listItems[i].getName() == n){
+      curItem = listItems[i].getName();
+    }
+    //Do something
   }
+  //curItem = n;
   completeness = false;
   ultrabutton = item;
   document.getElementById("cool").style.display = "block";
@@ -123,13 +145,3 @@ const construct = function(n, p) {
    
   
 };
-
-/*const remove = function(n) {
-   for (i = 0; i < listItems.length; i++) {
-        if((listItems[i].getName()).equals(n)){
-            listItems.splice(i);
-        }  
-   }  
-  
-};
-*/
