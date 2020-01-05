@@ -171,8 +171,8 @@ const construct = function(n, p, d) {
    completebutton.innerHTML = "Mark Complete";
    const removebutton = document.createElement("button");
    removebutton.innerHTML = "X";
-   const dates = document.createElement("p");
-   if(dates != undefined){
+   const dates = document.createElement("h2");
+   if(d != undefined){
        dates.innerHTML = d;
    }
    const breaker = document.createElement("BR");
