@@ -36,6 +36,7 @@ var today = new Date();
 var supe = false;
 var dat = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
 console.log(dat);
+var datess = "";
 window.onload = function(){
 var x = document.getElementById("cool");
 var y = document.getElementById("show");
@@ -115,6 +116,7 @@ document.getElementById("inprior").onclick = function() {
     br.remove();
     for( var i = 0; i < listItems.length; i++){ 
     if (listItems[i].getName() == curItem) {
+        datess = listItems[i].getDate();
         if(listItems[i].getPriority() == "low"){
             prior = "high"
         }
@@ -125,7 +127,7 @@ document.getElementById("inprior").onclick = function() {
       }
     }
     
-    construct(curItem, prior);
+    construct(curItem, prior, datess);
     if(completeness == true){
         console.log("Has this?");
         document.getElementById("complete").click();
