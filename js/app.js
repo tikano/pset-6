@@ -147,7 +147,7 @@ const construct = function(n, p, d) {
    const header = document.getElementById("h3");
    listItems.push(new listObject(n, p, d));
    if(n != ""){
-   const item = document.createElement("button");
+   const item = document.createElement("h2");
    item.innerHTML = n;
    for (var i = 0; i < listItems.length; i++) {
     console.log("function");
