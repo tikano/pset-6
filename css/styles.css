@@ -17,7 +17,9 @@ h3 {
   font: bold 1.1em "Century Gothic", "Century Gothic", "Apple Gothic", sans-serif;
   letter-spacing: 0.1em;
 }
-
+div {
+    display: inline-block;
+}
 button {
   display: inline-block;
   margin: auto;
