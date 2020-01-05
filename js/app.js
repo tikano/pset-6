@@ -134,7 +134,7 @@ document.getElementById("inprior").onclick = function() {
 }
 document.getElementById("super").onclick = function(){
   supe = true;
-  y.style.display = "inline-block";
+  y.style.display = "block";
 }
 document.getElementById("show").onclick = function(){
   document.getElementById("point").innerHTML = points.toString();
