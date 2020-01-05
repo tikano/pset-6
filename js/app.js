@@ -154,7 +154,7 @@ const construct = function(n, p, d) {
     if(listItems[i].getName() == n){
       console.log(listItems[i].getPriority());
       if(listItems[i].getPriority() == "high"){
-          item.innerHTML = "!" + n;
+          item.innerHTML = "! " + n;
       }
       else{
           item.innerHTML = n;
