@@ -8,7 +8,18 @@ class listObject{
     getName(){
       return this.name;
     }
-
+    
+    getPriority(){
+        return this.priority;
+    }
+    TogglePriority(){
+        if(this.priority == "low"){
+            this.priority = "high";
+        }
+        else{
+            this.priority == "low";
+        }
+    }
     getDate(){
       return this.date;
     }
@@ -116,6 +127,17 @@ const construct = function(n, p, d) {
    if(n != ""){
    const item = document.createElement("button");
    item.innerHTML = n;
+   for (var i = 0; i < listItems.length; i++) {
+    if(listItems[i].getName() == n){
+      if(listItems[i].getPriority == "high"){
+          item.innerHTML = "!" + n;
+      }
+      else{
+          item.innerHTML = n;
+      }
+    }
+    //Do something
+   }
    const breaker = document.createElement("BR");
    if(p == "high"){
    header.append(breaker);
