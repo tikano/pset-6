@@ -104,6 +104,7 @@ document.getElementById("inprior").onclick = function() {
     var br = document.getElementById(curItem + "1");
     br.remove();
     for( var i = 0; i < listItems.length; i++){ 
+        console.log("What about this part?");
     if (listItems[i].getName() == curItem) {
         console.log("Is this part even running");
         if(listItems[i].getPriority() == "low"){
