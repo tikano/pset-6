@@ -125,7 +125,7 @@ document.getElementById("inprior").onclick = function() {
     
     construct(curItem, prior);
     if(completeness == true){
-        console.log("Has this period been reached?");
+        console.log("Has this?");
         document.getElementById("complete").click();
     }
     x.style.display = "none";
