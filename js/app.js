@@ -134,7 +134,7 @@ document.getElementById("inprior").onclick = function() {
 }
 document.getElementById("super").onclick = function(){
   supe = true;
-  y.style.display = "block";
+  y.style.display = "inline-block";
 }
 document.getElementById("show").onclick = function(){
   document.getElementById("point").innerHTML = points.toString();
@@ -171,7 +171,10 @@ const construct = function(n, p, d) {
    completebutton.innerHTML = "Mark Complete";
    const removebutton = document.createElement("button");
    removebutton.innerHTML = "X";
-   const date = document.createElement("p");
+   const dates = document.createElement("p");
+   if(dates != undefined){
+       dates.innerHTML = d;
+   }
    const breaker = document.createElement("BR");
    if(p == "high"){
    header.append(breaker);
@@ -185,6 +188,7 @@ const construct = function(n, p, d) {
    div.append(prioritybutton);
    div.append(completebutton);
    div.append(removebutton);
+   div.append(dates):
    div.id = n;
    ultrabutton = item;
    breaker.id = n + "1";
