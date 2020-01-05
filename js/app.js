@@ -106,10 +106,10 @@ document.getElementById("inprior").onclick = function() {
     for( var i = 0; i < listItems.length; i++){ 
     if (listItems[i].getName() == curItem) {
         if(listItems[i].getPriority() == "low"){
-            prior == "high"
+            prior = "high"
         }
         else{
-            prior == "low"
+            prior = "low"
         }
         listItems.splice(i,1);
       }
