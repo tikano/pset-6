@@ -102,7 +102,7 @@ document.getElementById("complete").onclick = function() {
 document.getElementById("inprior").onclick = function() {
     var button = document.getElementById(curItem);
     console.log("What about this period?");
-    if(button.style.textDecoration != "line-through"){
+    if(ultrabutton.style.textDecoration != "line-through"){
         completeness = false;
     }
     else{
