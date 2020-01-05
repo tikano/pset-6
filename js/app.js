@@ -103,9 +103,9 @@ document.getElementById("inprior").onclick = function() {
     var br = document.getElementById(curItem + "1");
     br.remove();
     for( var i = 0; i < listItems.length; i++){ 
-    if (listItems[i].getName() === curItem) {
-        arr.splice(i, 1); 
-        }
+    if (listItems[i].getName() == curItem) {
+        listItems.splice(i,1);
+      }
     }
     construct(curItem, "high");
     x.style.display = "none";
@@ -116,8 +116,8 @@ document.getElementById("deprior").onclick = function() {
     var br = document.getElementById(curItem + "1");
     br.remove();
     for( var i = 0; i < listItems.length; i++){ 
-    if (listItems[i].getName() === curItem) {
-        arr.splice(i, 1); 
+    if (listItems[i].getName() == curItem) {
+        listItems.splice(i,1);
         }
     }
     construct(curItem, "low");
