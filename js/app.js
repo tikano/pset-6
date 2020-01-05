@@ -3,6 +3,7 @@ class listObject{
       this.name = name;
       this.priority = priority;
       this.date = date;
+      this.completeness = completeness;
     }
 
     getName(){
@@ -100,6 +101,12 @@ document.getElementById("complete").onclick = function() {
 }
 document.getElementById("inprior").onclick = function() {
     var button = document.getElementById(curItem);
+    if(button.style.textDecoration != "line-through"){
+        completeness = true;
+    }
+    else{
+        completeness = false;
+    }
     button.remove();
     var br = document.getElementById(curItem + "1");
     br.remove();
@@ -118,6 +125,9 @@ document.getElementById("inprior").onclick = function() {
     }
     
     construct(curItem, prior);
+    if(completeness == true){
+        document.getElementById("complete").click();
+    }
     x.style.display = "none";
 }
 document.getElementById("super").onclick = function(){
