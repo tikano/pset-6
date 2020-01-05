@@ -8,7 +8,7 @@ class listObject{
 
     getName(){
       return this.name;
-    }}
+    }
     
     getPriority(){
         return this.priority;
