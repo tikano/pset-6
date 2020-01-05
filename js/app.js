@@ -40,6 +40,7 @@ var x = document.getElementById("cool");
 var y = document.getElementById("show");
 y.style.display = "none";
 x.style.display = "none";
+var prior = "low";
 document.addEventListener("keyup", function(event) {
   if (event.keyCode === 13) {
     document.getElementById("input").click();
@@ -104,23 +105,17 @@ document.getElementById("inprior").onclick = function() {
     br.remove();
     for( var i = 0; i < listItems.length; i++){ 
     if (listItems[i].getName() == curItem) {
+        if(listItems[i].getPriority() == "low"){
+            prior == "high"
+        }
+        else{
+            prior == "low"
+        }
         listItems.splice(i,1);
       }
     }
-    construct(curItem, "high");
-    x.style.display = "none";
-}
-document.getElementById("deprior").onclick = function() {
-    var button = document.getElementById(curItem);
-    button.remove();
-    var br = document.getElementById(curItem + "1");
-    br.remove();
-    for( var i = 0; i < listItems.length; i++){ 
-    if (listItems[i].getName() == curItem) {
-        listItems.splice(i,1);
-        }
-    }
-    construct(curItem, "low");
+    
+    construct(curItem, prior);
     x.style.display = "none";
 }
 document.getElementById("super").onclick = function(){
