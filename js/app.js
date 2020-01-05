@@ -101,6 +101,7 @@ document.getElementById("complete").onclick = function() {
 }
 document.getElementById("inprior").onclick = function() {
     var button = document.getElementById(curItem);
+    console.log("What about this period?");
     if(button.style.textDecoration != "line-through"){
         completeness = true;
     }
@@ -111,9 +112,7 @@ document.getElementById("inprior").onclick = function() {
     var br = document.getElementById(curItem + "1");
     br.remove();
     for( var i = 0; i < listItems.length; i++){ 
-        console.log("What about this part?");
     if (listItems[i].getName() == curItem) {
-        console.log("Is this part even running");
         if(listItems[i].getPriority() == "low"){
             prior = "high"
         }
@@ -126,6 +125,7 @@ document.getElementById("inprior").onclick = function() {
     
     construct(curItem, prior);
     if(completeness == true){
+        console.log("Has this period been reached?");
         document.getElementById("complete").click();
     }
     x.style.display = "none";
