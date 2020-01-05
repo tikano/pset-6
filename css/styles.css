@@ -108,7 +108,7 @@ canvas {
     float:left;
 }
 #point{
-    display: inline-block;
+    display: inline;
 }
 #pointmode{
     display: inline-block;
