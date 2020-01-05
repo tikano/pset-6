@@ -103,10 +103,10 @@ document.getElementById("inprior").onclick = function() {
     var button = document.getElementById(curItem);
     console.log("What about this period?");
     if(button.style.textDecoration != "line-through"){
-        completeness = true;
+        completeness = false;
     }
     else{
-        completeness = false;
+        completeness = true;
     }
     button.remove();
     var br = document.getElementById(curItem + "1");
