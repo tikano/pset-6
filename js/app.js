@@ -73,7 +73,7 @@ document.getElementById("remove").onclick = function() {
     br.remove();
     for( var i = 0; i < listItems.length; i++){ 
     if (listItems[i].getName() === curItem) {
-        arr.splice(i, 1); 
+        listItems.splice(i, 1); 
         }
     }
     x.style.display = "none";
