@@ -71,6 +71,11 @@ document.getElementById("remove").onclick = function() {
     button.remove();
     var br = document.getElementById(curItem + "1");
     br.remove();
+    for( var i = 0; i < listItems.length; i++){ 
+    if (listItems[i].getName() === curItem) {
+        arr.splice(i, 1); 
+        }
+    }
     x.style.display = "none";
 }
 
@@ -97,6 +102,11 @@ document.getElementById("inprior").onclick = function() {
     button.remove();
     var br = document.getElementById(curItem + "1");
     br.remove();
+    for( var i = 0; i < listItems.length; i++){ 
+    if (listItems[i].getName() === curItem) {
+        arr.splice(i, 1); 
+        }
+    }
     construct(curItem, "high");
     x.style.display = "none";
 }
@@ -105,6 +115,11 @@ document.getElementById("deprior").onclick = function() {
     button.remove();
     var br = document.getElementById(curItem + "1");
     br.remove();
+    for( var i = 0; i < listItems.length; i++){ 
+    if (listItems[i].getName() === curItem) {
+        arr.splice(i, 1); 
+        }
+    }
     construct(curItem, "low");
     x.style.display = "none";
 }
