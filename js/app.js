@@ -188,7 +188,7 @@ const construct = function(n, p, d) {
    div.append(prioritybutton);
    div.append(completebutton);
    div.append(removebutton);
-   div.append(dates):
+   div.append(dates);
    div.id = n;
    ultrabutton = item;
    breaker.id = n + "1";
