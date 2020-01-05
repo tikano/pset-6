@@ -169,6 +169,7 @@ const construct = function(n, p, d) {
    completebutton.innerHTML = "Mark Complete";
    const removebutton = document.createElement("button");
    removebutton.innerHTML = "X";
+   const date = document.createElement("p");
    const breaker = document.createElement("BR");
    if(p == "high"){
    header.append(breaker);
