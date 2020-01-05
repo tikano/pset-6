@@ -110,3 +110,6 @@ canvas {
 #point{
     display: inline-block;
 }
+#pointmode{
+    display: inline-block;
+}
