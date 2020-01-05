@@ -162,16 +162,27 @@ const construct = function(n, p, d) {
     }
     //Do something
    }
+   const div = document.createElement("div");
+   const prioritybutton = document.createElement("button");
+   prioritybutton.innerHTML = "!";
+   const completebutton = document.createElement("button");
+   completebutton.innerHTML = "Mark Complete";
+   const removebutton = document.createElement("button");
+   removebutton.innerHTML = "X";
    const breaker = document.createElement("BR");
    if(p == "high"){
    header.append(breaker);
-   header.append(item);
+   header.append(div);
    }
    else{
      header.after(breaker);
-     header.after(item);
+     header.after(div);
    }
-   item.id = n;
+   div.append(item);
+   div.append(prioritybutton);
+   div.append(completebutton);
+   div.append(removebutton);
+   div.id = n;
    ultrabutton = item;
    breaker.id = n + "1";
    item.addEventListener ("click", function() {
