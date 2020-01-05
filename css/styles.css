@@ -94,3 +94,10 @@ canvas {
 .exercise div {
   text-align: center;
 }
+
+#super{
+    float:left;
+}
+#point{
+    float:right;
+}
