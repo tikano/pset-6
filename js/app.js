@@ -185,7 +185,7 @@ const construct = function(n, p, d) {
    div.id = n;
    ultrabutton = item;
    breaker.id = n + "1";
-   item.addEventListener ("click", function() {
+   prioritybutton.addEventListener ("click", function() {
    for (var i = 0; i < listItems.length; i++) {
     if(listItems[i].getName() == n){
       curItem = listItems[i].getName();
@@ -195,7 +195,34 @@ const construct = function(n, p, d) {
   //curItem = n;
   completeness = false;
   ultrabutton = item;
-  document.getElementById("cool").style.display = "block";
+  document.getElementById("inprior").click();
+  
+});
+   removebutton.addEventListener ("click", function() {
+   for (var i = 0; i < listItems.length; i++) {
+    if(listItems[i].getName() == n){
+      curItem = listItems[i].getName();
+    }
+    //Do something
+  }
+  //curItem = n;
+  completeness = false;
+  ultrabutton = item;
+  document.getElementById("remove").click();
+  
+});
+   completebutton.addEventListener ("click", function() {
+   for (var i = 0; i < listItems.length; i++) {
+    if(listItems[i].getName() == n){
+      curItem = listItems[i].getName();
+    }
+    //Do something
+  }
+  //curItem = n;
+  completeness = false;
+  ultrabutton = item;
+  document.getElementById("complete").click();
+  
 });
    }
    console.log("why");
