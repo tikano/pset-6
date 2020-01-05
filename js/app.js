@@ -85,6 +85,7 @@ document.getElementById("complete").onclick = function() {
     console.log(completeness);
     if(ultrabutton.style.textDecoration != "line-through"){
       ultrabutton.style.setProperty("text-decoration", "line-through");
+      document.getElementById(curItem + "complete").innerHTML = "Mark Incomplete";
       if(supe == true){
     var button = document.getElementById(curItem);
     button.remove();
@@ -96,6 +97,7 @@ document.getElementById("complete").onclick = function() {
     }
     else{
       ultrabutton.style.setProperty("text-decoration", "none");
+      document.getElementById(curItem + "complete").innerHTML = "Mark Complete";
     }
     x.style.display = "none";
 }
@@ -186,6 +188,7 @@ const construct = function(n, p, d) {
    div.id = n;
    ultrabutton = item;
    breaker.id = n + "1";
+   completebutton.id = n + "complete";
    prioritybutton.addEventListener ("click", function() {
    for (var i = 0; i < listItems.length; i++) {
     if(listItems[i].getName() == n){
