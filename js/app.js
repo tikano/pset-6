@@ -143,8 +143,10 @@ const construct = function(n, p, d) {
    const item = document.createElement("button");
    item.innerHTML = n;
    for (var i = 0; i < listItems.length; i++) {
+    console.log("function");
     if(listItems[i].getName() == n){
-      if(listItems[i].getPriority == "high"){
+      console.log(listItems[i].getPriority());
+      if(listItems[i].getPriority() == "high"){
           item.innerHTML = "!" + n;
       }
       else{
