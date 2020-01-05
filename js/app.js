@@ -174,8 +174,9 @@ const construct = function(n, p, d) {
    const removebutton = document.createElement("button");
    removebutton.innerHTML = "X";
    const dates = document.createElement("h2");
-   var matchedPosition = d.search(/[a-z]/i);
-   if(d != undefined && matchedPosition == -1){
+   var parts = d.split('-');
+   var mydate = new Date(parts[0], parts[1] - 1, parts[2]); 
+   if(d != undefined && mydate.getTime() === mydate.getTime()){
        dates.innerHTML = d;
    }
    const breaker = document.createElement("BR");
