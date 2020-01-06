@@ -64,6 +64,7 @@ var supe = false;
 var dat = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
 console.log(dat);
 var datess = "";
+var deleted = 0;
 window.onload = function(){
 var x = document.getElementById("cool");
 var y = document.getElementById("show");
@@ -101,7 +102,9 @@ document.getElementById("remove").onclick = function() {
     ultradiv.remove();
     for( var i = 0; i < listItems.length; i++){ 
     if (listItems[i].getName() === curItem) {
-        listItems.splice(i, 1); 
+        listItems.splice(i, 1);
+		deleted = deleted + 1;
+		
         }
     }
     x.style.display = "none";
@@ -147,6 +150,7 @@ document.getElementById("inprior").onclick = function() {
             prior = "low"
         }
         listItems.splice(i,1);
+		deleted = deleted + 1;
       }
     }
     
@@ -158,10 +162,41 @@ document.getElementById("inprior").onclick = function() {
     x.style.display = "none";
 }
 document.getElementById("super").onclick = function(){
-  supe = true;
-  y.style.display = "block";
+	if(supe == false){
+	document.getElementById("super").innerHTML = "<strong> Deactivate Point Mode </strong>";
+	supe = true;
+	y.style.display = "block";
+	}
+	else{
+	document.getElementById("super").innerHTML = "<strong> Activate Point Mode </strong>";
+	supe = false;
+	y.style.display = "none";
+	}
 }
 document.getElementById("show").onclick = function(){
+	var permission = prompt("This will delete completed items and items past the due date. Are you okay with this? y/n");
+	if(permission == "y"){
+	for( var i = 0; i < listItems.length; i++){
+		var parts = listItems[i].getDate().split('-');
+		var mydate = new Date(parts[0], parts[1] - 1, parts[2]);
+		console.log(mydate);
+		console.log(listItems[i].getId());
+		console.log(today);
+		if(today > mydate || document.getElementById(listItems[i].getId() + "5000").style.textDecoration == "line-through"){
+			console.log(listItems[i].getId());
+			document.getElementById(listItems[i].getId()).remove();
+			listItems.splice(i,1);
+			deleted = deleted + 1;
+			if(today < mydate){
+			points = points - 1;
+			}
+			else{
+				points = points + 1;
+			}
+			i = -1;
+		}
+	}
+	}
   document.getElementById("point").innerHTML = points.toString();
 }
 }
@@ -171,13 +206,17 @@ var listItems = [];
 const construct = function(n, p, d, ide) {
 	if(ide == undefined){
 	var id = n;
+	//alert(counts);
 	if(count(n) > 0){
-	   id = n + (count(n)).toString();
+		//alert ("in if");
+		//alert (listItems.length);
+	   id = n + (count(n) + deleted).toString();
     }
 	}
 	else{
 		id = ide;
 	}
+	
    console.log("hola");
    const header = document.getElementById("h3");
    listItems.push(new listObject(n, p, d, id));
@@ -203,7 +242,7 @@ const construct = function(n, p, d, ide) {
    const completebutton = document.createElement("button");
    completebutton.innerHTML = "Mark Complete";
    const removebutton = document.createElement("button");
-   removebutton.innerHTML = "X" + id; 
+   removebutton.innerHTML = "X"; 
    
    if(p == "high"){
    header.append(div);
@@ -221,6 +260,7 @@ const construct = function(n, p, d, ide) {
 	   div.append(dates);
    }
    div.id = id;
+   item.id = id + "5000";
    ultrabutton = item;
    ultradiv = div;
    completebutton.id = id + "complete";
