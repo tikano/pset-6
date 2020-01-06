@@ -274,9 +274,6 @@ const construct = function(n, p, d, ide) {
    item.id = id + "5000";
    ultrabutton = item;
    ultradiv = div;
-	   if(p == "high"){
-		   document.getElementById(prioritybutton).style.backgroundColor= "red";
-	   }
    completebutton.id = id + "complete";
    prioritybutton.id = id + "priority";
    prioritybutton.addEventListener ("click", function() {
