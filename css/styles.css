@@ -1,6 +1,7 @@
 body {
     margin: auto;
     width: 1224px;
+    background-color: lightblue;
 }
 
 body:last-child {
@@ -25,6 +26,7 @@ button {
   margin-right: 1%;
   height: 1.3em;
   font: 0.8em "Century Gothic", "Century Gothic", "Apple Gothic", sans-serif;
+  font-weight: bold;
 }
 
 h2 {
@@ -107,10 +109,17 @@ canvas {
 #super{
     float:left;
 	width: 13em;
+	color: red;
+	background-color: "";
 }
 #show{
 	width: 12em;
+	color: red;
+	background-color: "";
 }
 #point{
     display: inline;
+}
+#input{
+	height:3em
 }
