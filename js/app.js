@@ -1,15 +1,20 @@
 class listObject{
-    constructor(name, priority,date){
+    constructor(name, priority,date, id){
       this.name = name;
       this.priority = priority;
       this.date = date;
       this.completeness = completeness;
+	  this.id = id;
     }
 
     getName(){
       return this.name;
     }
     
+	getId(){
+		return this.id;
+	}
+	
     getPriority(){
         return this.priority;
     }
@@ -28,6 +33,16 @@ class listObject{
 
 }
 
+function count(item) {
+  var count = 0;
+  for( var i = 0; i < listItems.length; i++){ 
+    if (listItems[i].getName() === item) {
+		count = count + 1;
+    }
+  }
+  return count;
+}
+
 
 function isValidDate(dateString) {
   var regEx = /^\d{4}-\d{2}-\d{2}$/;
@@ -43,6 +58,7 @@ var points = 0;
 var curItem = "";
 var completeness = false;
 var ultrabutton;
+var ultradiv;
 var today = new Date();
 var supe = false;
 var dat = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
@@ -82,9 +98,7 @@ document.getElementById("input").onclick = function() {
 document.getElementById("remove").onclick = function() {
     console.log("hello");
     var button = document.getElementById(curItem);
-    button.remove();
-    var br = document.getElementById(curItem + "1");
-    br.remove();
+    ultradiv.remove();
     for( var i = 0; i < listItems.length; i++){ 
     if (listItems[i].getName() === curItem) {
         listItems.splice(i, 1); 
@@ -97,24 +111,22 @@ document.getElementById("complete").onclick = function() {
     console.log(completeness);
     if(ultrabutton.style.textDecoration != "line-through"){
       ultrabutton.style.setProperty("text-decoration", "line-through");
-      document.getElementById(curItem + "complete").innerHTML = "Mark Incomplete";
+      document.getElementById(ultradiv.id + "complete").innerHTML = "Mark Incomplete";
       if(supe == true){
     var button = document.getElementById(curItem);
-    button.remove();
-    var br = document.getElementById(curItem + "1");
-    br.remove();
+    ultradiv.remove();
     x.style.display = "none";
     points = points + 1;
+	document.getElementById("point").innerHTML = points.toString();
   }
     }
     else{
       ultrabutton.style.setProperty("text-decoration", "none");
-      document.getElementById(curItem + "complete").innerHTML = "Mark Complete";
+      document.getElementById(ultradiv.id + "complete").innerHTML = "Mark Complete";
     }
     x.style.display = "none";
 }
 document.getElementById("inprior").onclick = function() {
-    var button = document.getElementById(curItem);
     console.log("What about this period?");
     if(ultrabutton.style.textDecoration != "line-through"){
         completeness = false;
@@ -122,12 +134,12 @@ document.getElementById("inprior").onclick = function() {
     else{
         completeness = true;
     }
-    button.remove();
-    var br = document.getElementById(curItem + "1");
-    br.remove();
-    for( var i = 0; i < listItems.length; i++){ 
-    if (listItems[i].getName() == curItem) {
+    ultradiv.remove();
+	var idd = "";
+    for( var i = 0; i < listItems.length; i++){
+    if (listItems[i].getId() == ultradiv.id) {
         datess = listItems[i].getDate();
+		idd = listItems[i].getId();
         if(listItems[i].getPriority() == "low"){
             prior = "high"
         }
@@ -138,7 +150,7 @@ document.getElementById("inprior").onclick = function() {
       }
     }
     
-    construct(curItem, prior, datess);
+    construct(curItem, prior, datess,idd);
     if(completeness == true){
         console.log("Has this?");
         document.getElementById("complete").click();
@@ -156,11 +168,19 @@ document.getElementById("show").onclick = function(){
 
 var listItems = [];
 
-const construct = function(n, p, d) {
+const construct = function(n, p, d, ide) {
+	if(ide == undefined){
+	var id = n;
+	if(count(n) > 0){
+	   id = n + (count(n)).toString();
+    }
+	}
+	else{
+		id = ide;
+	}
    console.log("hola");
-   
    const header = document.getElementById("h3");
-   listItems.push(new listObject(n, p, d));
+   listItems.push(new listObject(n, p, d, id));
    if(n != ""){
    const item = document.createElement("h2");
    item.innerHTML = n;
@@ -183,31 +203,27 @@ const construct = function(n, p, d) {
    const completebutton = document.createElement("button");
    completebutton.innerHTML = "Mark Complete";
    const removebutton = document.createElement("button");
-   removebutton.innerHTML = "X";
-   const dates = document.createElement("h2");
-   var parts = d.split('-');
-   var mydate = new Date(parts[0], parts[1] - 1, parts[2]); 
-   if(d != undefined && isValidDate(d)){
-       dates.innerHTML = d;
-   }
-   const breaker = document.createElement("BR");
+   removebutton.innerHTML = "X" + id; 
+   
    if(p == "high"){
-   header.append(breaker);
    header.append(div);
    }
    else{
-     header.after(breaker);
      header.after(div);
    }
    div.append(item);
    div.append(prioritybutton);
    div.append(completebutton);
    div.append(removebutton);
-   div.append(dates);
-   div.id = n;
+   if(d != undefined && isValidDate(d)){
+	   const dates = document.createElement("h2");
+       dates.innerHTML = d;
+	   div.append(dates);
+   }
+   div.id = id;
    ultrabutton = item;
-   breaker.id = n + "1";
-   completebutton.id = n + "complete";
+   ultradiv = div;
+   completebutton.id = id + "complete";
    prioritybutton.addEventListener ("click", function() {
    for (var i = 0; i < listItems.length; i++) {
     if(listItems[i].getName() == n){
@@ -218,19 +234,15 @@ const construct = function(n, p, d) {
   //curItem = n;
   completeness = false;
   ultrabutton = item;
+  ultradiv = div;
   document.getElementById("inprior").click();
   
 });
    removebutton.addEventListener ("click", function() {
-   for (var i = 0; i < listItems.length; i++) {
-    if(listItems[i].getName() == n){
-      curItem = listItems[i].getName();
-    }
-    //Do something
-  }
-  //curItem = n;
+   curItem = n;
   completeness = false;
   ultrabutton = item;
+  ultradiv = div;
   document.getElementById("remove").click();
   
 });
@@ -241,14 +253,13 @@ const construct = function(n, p, d) {
     }
     //Do something
   }
-  //curItem = n;
   completeness = false;
   ultrabutton = item;
+  ultradiv = div;
   document.getElementById("complete").click();
   
 });
    }
    console.log("why");
    
-  
 };
