@@ -28,6 +28,7 @@ class listObject{
 
 }
 
+
 function isValidDate(dateString) {
   var regEx = /^\d{4}-\d{2}-\d{2}$/;
   if(!dateString.match(regEx)) return false;  // Invalid format
@@ -186,7 +187,7 @@ const construct = function(n, p, d) {
    const dates = document.createElement("h2");
    var parts = d.split('-');
    var mydate = new Date(parts[0], parts[1] - 1, parts[2]); 
-   if(d != undefined && isValidDate(mydate)){
+   if(d != undefined && isValidDate(d)){
        dates.innerHTML = d;
    }
    const breaker = document.createElement("BR");
