@@ -28,6 +28,16 @@ class listObject{
 
 }
 
+function isValidDate(dateString) {
+  var regEx = /^\d{4}-\d{2}-\d{2}$/;
+  if(!dateString.match(regEx)) return false;  // Invalid format
+  var d = new Date(dateString);
+  var dNum = d.getTime();
+  if(!dNum && dNum !== 0) return false; // NaN value, Invalid date
+  return d.toISOString().slice(0,10) === dateString;
+}
+
+
 var points = 0;
 var curItem = "";
 var completeness = false;
@@ -176,7 +186,7 @@ const construct = function(n, p, d) {
    const dates = document.createElement("h2");
    var parts = d.split('-');
    var mydate = new Date(parts[0], parts[1] - 1, parts[2]); 
-   if(d != undefined && mydate.getTime() === mydate.getTime()){
+   if(d != undefined && isValidDate(mydate)){
        dates.innerHTML = d;
    }
    const breaker = document.createElement("BR");
