@@ -115,6 +115,7 @@ document.getElementById("complete").onclick = function() {
     if(ultrabutton.style.textDecoration != "line-through"){
       ultrabutton.style.setProperty("text-decoration", "line-through");
       document.getElementById(ultradiv.id + "complete").innerHTML = "Mark Incomplete";
+	  document.getElementById(ultradiv.id + "complete").style.backgroundColor= "lightgreen";
       if(supe == true){
     var button = document.getElementById(curItem);
     ultradiv.remove();
@@ -125,6 +126,7 @@ document.getElementById("complete").onclick = function() {
     }
     else{
       ultrabutton.style.setProperty("text-decoration", "none");
+	  document.getElementById(ultradiv.id + "complete").style.backgroundColor= "";
       document.getElementById(ultradiv.id + "complete").innerHTML = "Mark Complete";
     }
     x.style.display = "none";
@@ -155,6 +157,15 @@ document.getElementById("inprior").onclick = function() {
     }
     
     construct(curItem, prior, datess,idd);
+	console.log("HERE");
+	if(prior == "high"){
+		console.log("THERE");
+		document.getElementById(idd + "priority").style.backgroundColor= "red";
+	}
+	else{
+		console.log("GERE");
+		document.getElementById(idd + "priority").style.backgroundColor="";
+	}
     if(completeness == true){
         console.log("Has this?");
         document.getElementById("complete").click();
@@ -264,6 +275,7 @@ const construct = function(n, p, d, ide) {
    ultrabutton = item;
    ultradiv = div;
    completebutton.id = id + "complete";
+   prioritybutton.id = id + "priority";
    prioritybutton.addEventListener ("click", function() {
    for (var i = 0; i < listItems.length; i++) {
     if(listItems[i].getName() == n){
